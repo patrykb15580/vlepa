@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  $_SESSION['mailing_form_display_time'] = time();
+?>
 <!DOCTYPE html>
 <html lang="pl" class="no-js">
   <head>
