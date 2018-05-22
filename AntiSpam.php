@@ -1,31 +1,15 @@
 <?php
-/**
-*
-* AntiSpam class for mailing forms
-*
-*/
 class AntiSpam
 {
 	public static function isSpam()
 	{
-		if (self::sendByBot()) {
-			
-			return true;
-		}
-
-		return false;
+		return (self::sendByBot()) ? true : false;
 	}
-	private static function sendByBot($time=6)
+	private static function sendByBot($time = 8)
 	{
 		$display_time = time() - $_SESSION['mailing_form_display_time'];
 		unset($_SESSION['mailing_form_display_time']);
-
-		if ($display_time > $time) {
-			
-			return false;
-		} else {
-
-			return true;
-		}
+		
+		return ($display_time < $time) ? true : false;
 	}
 }
