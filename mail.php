@@ -5,7 +5,7 @@
 		$status = '?mail=error';
 	} else {
 		$to      = 'patrykb15580@gmail.com';
-		$subject = 'Zapytanie ze strony Fotobum.pl';
+		$subject = 'Zapytanie ze strony vlepa.com';
 		$message = 'Imię i nazwisko: '.$_POST['name'].'<br /><br />'.$_POST['message'];
 		
 		$headers = 'From: no-reply@powiadomienia.pri.pl' . "\r\n";
@@ -14,10 +14,10 @@
 		$headers .= 'Reply-To: '. $_POST['email'] . "\r\n";
 		$headers .= 'X-Mailer: PHP/' . phpversion();
 
-		if (!mail($to, $subject, $message, $headers)) {
-			$status = '?mail=error';
+		if (mail($to, $subject, $message, $headers)) {
+			$status = '?mail=sended';
 		} else {
-			$status = "?mail=sended";
+			$status = "?mail=error";
 		}
 	}
 
